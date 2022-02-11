@@ -19,12 +19,12 @@ namespace MusicalInstrument
 			Type = SignalGeneratorType.Sin,
 			Gain = 0.2
 		};
+		WaveOutEvent player = new WaveOutEvent();
 
 		public Form1()
 		{
 			InitializeComponent();
 
-			var player = new WaveOutEvent();
 			player.Init(sine);
 
 			trackFrequency.ValueChanged += (s, e) => sine.Frequency = trackFrequency.Value;
@@ -32,9 +32,6 @@ namespace MusicalInstrument
 
 			trackVolume.ValueChanged += (s, e) => player.Volume = trackVolume.Value / 100F;
 			trackVolume.Value = 50;
-
-			MouseDown += (s, e) => player.Play();
-			MouseUp += (s, e) => player.Stop();
 
 			trackFrequency.MouseDown += (s, e) => player.Play();
 			trackFrequency.MouseUp += (s, e) => player.Stop();
@@ -46,6 +43,16 @@ namespace MusicalInstrument
 		private void Form1_Load(object sender, EventArgs e)
 		{
 
+		}
+
+		private void MouseDown(object sender, MouseEventArgs e)
+		{
+			player.Play();
+		}
+
+		private void MouseUp(object sender, MouseEventArgs e)
+		{
+			player.Stop();
 		}
 	}
 }
