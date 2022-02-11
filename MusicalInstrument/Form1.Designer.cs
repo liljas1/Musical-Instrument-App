@@ -70,6 +70,7 @@ namespace MusicalInstrument
 			this.panel.Size = new System.Drawing.Size(725, 375);
 			this.panel.TabIndex = 2;
 			this.panel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MouseDown);
+			this.panel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel_MouseMove);
 			this.panel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.MouseUp);
 			// 
 			// Form1
